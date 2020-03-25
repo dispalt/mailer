@@ -2,15 +2,15 @@ package com.github.jurajburian.mailer
 
 import javax.mail.internet.{InternetAddress, MimeMultipart}
 import javax.mail.{Folder, Store, internet}
-
-import org.scalatest._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
 /**
 	* Test suite used to test the basic functionality of the ''Mailer''.
 	*
 	* @author vaclav.svejcar
 	*/
-class MailerSpec extends FlatSpec with Matchers {
+class MailerSpec extends AnyFlatSpec with Matchers {
 
 	val RecipientAddress = "receiver@test.com"
 	val SenderAddress = "sender@test.com"
