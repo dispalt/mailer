@@ -29,5 +29,6 @@ src_managed/
 project/boot/
 .history
 .cache
+.bsp
 
 # Created by .ignore support plugin (hsz.mobi)

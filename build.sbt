@@ -1,10 +1,10 @@
-val pScalaVersion = "2.13.1"
+val pScalaVersion = "2.13.3"
 
-organization := "com.github.jurajburian"
+organization := "com.dispalt"
 
 name := "mailer"
 
-version := "1.2.4"
+version := "1.2.5"
 
 description := "Thin wrapper of JavaMail library written in Scala language. Mailer is aim to be used in situations when is necessary send multiple mails, e.t. instance of javax.mail.Session is created and used by Mailer."
 
@@ -22,8 +22,16 @@ publishTo := {
 		Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }
 
-// enable automatic linking to the external Scaladoc of managed dependencies
-autoAPIMappings := true
+publishTo := sonatypePublishToBundle.value
+
+// Your profile name of the sonatype account. The default is the same with the organization value
+sonatypeProfileName := "com.dispalt"
+
+// To sync with Maven central, you need to supply the following information:
+publishMavenStyle := true
+
+// Open-source license of your choice
+licenses := Seq("APL2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
 
 publishArtifact in Test := false
 
