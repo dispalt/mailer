@@ -10,7 +10,7 @@ description := "Thin wrapper of JavaMail library written in Scala language. Mail
 
 scalaVersion in Scope.GlobalScope := pScalaVersion
 
-crossScalaVersions := Seq("2.11.8", pScalaVersion)
+crossScalaVersions := Seq("2.12.12", pScalaVersion)
 
 publishMavenStyle := true
 
@@ -31,9 +31,6 @@ sonatypeProfileName := "com.dispalt"
 publishMavenStyle := true
 
 autoAPIMappings := true
-
-// Open-source license of your choice
-licenses := Seq("APL2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
 
 publishArtifact in Test := false
 
