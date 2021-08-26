@@ -100,3 +100,8 @@ _Remark:_ All methods from the Mailer trait may thrown `javax.mail.MessagingExce
 
 ### Known users
 * ESL - https://www.eslgaming.com
+
+## Publish
+* `publishSigned`
+* `sonatypeBundleUpload`
+* `sonatypeBundleRelease`
