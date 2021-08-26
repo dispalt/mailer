@@ -79,7 +79,7 @@ scalacOptions := Seq(
 )
 
 libraryDependencies ++= Seq(
-	"javax.mail" % "mail" % "1.4.7",
+	"javax.mail" % "javax.mail-api" % "1.6.2",
 	"de.saly" % "javamail-mock2-fullmock" % "0.5-beta4" % "test",
 	"org.scalatest" %% "scalatest" % "3.3.0-SNAP2" % "test"
 )
