@@ -1,7 +1,7 @@
 package com.github.jurajburian.mailer
 
-import javax.mail.internet.{InternetAddress, MimeMultipart}
-import javax.mail.{Folder, Store, internet}
+import jakarta.mail.internet.{InternetAddress, MimeMultipart}
+import jakarta.mail.{Folder, Store, internet}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
@@ -65,11 +65,11 @@ class MailerSpec extends AnyFlatSpec with Matchers {
 
 		// check whether the content and metadata of the first body part are correct
 		firstContent match {
-			case mm: MimeMultipart => {
+			case mm: MimeMultipart =>
 				mm.getCount should be(2)
 				val body = mm.getBodyPart(0)
 				body.getHeader(TestHeader.name)(0) should be(TestHeader.value)
-			}
+			case _ => fail("Expected mime multipart")
 		}
 
 		// close the SMTP session

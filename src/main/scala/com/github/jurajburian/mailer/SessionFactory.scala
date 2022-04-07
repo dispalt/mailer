@@ -1,7 +1,7 @@
 package com.github.jurajburian.mailer
 
 import java.util.Properties
-import javax.mail.{PasswordAuthentication, Authenticator, Session}
+import jakarta.mail.{PasswordAuthentication, Authenticator, Session}
 
 import scala.annotation.tailrec
 
@@ -62,7 +62,7 @@ object SessionFactory {
 					walk(p.prev, properties)
 				}
 			}
-			case class impl(prev: impl, val prop: Prop) extends SessionFactory {
+			case class impl(prev: impl, prop: Prop) extends SessionFactory {
 				override def append(p: Prop): SessionFactory = new impl(this, p)
 
 				def properties(): Properties = {

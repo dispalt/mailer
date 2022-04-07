@@ -1,6 +1,6 @@
 package com.github.jurajburian.mailer
 
-import javax.mail.internet.ParameterList
+import jakarta.mail.internet.ParameterList
 
 case class HeaderParam(name: String, value: String)
 

@@ -1,10 +1,10 @@
-val pScalaVersion = "2.13.3"
+val pScalaVersion = "2.13.6"
 
 organization := "com.dispalt"
 
 name := "mailer"
 
-version := "1.2.7"
+version := "2.0.0-SNAPSHOT"
 
 description := "Thin wrapper of JavaMail library written in Scala language. Mailer is aim to be used in situations when is necessary send multiple mails, e.t. instance of javax.mail.Session is created and used by Mailer."
 
@@ -79,7 +79,6 @@ scalacOptions := Seq(
 )
 
 libraryDependencies ++= Seq(
-	"com.sun.mail" % "javax.mail" % "1.6.2",
-	"de.saly" % "javamail-mock2-fullmock" % "0.5-beta4" % "test",
+	"com.sun.mail" % "jakarta.mail" % "2.0.1",
 	"org.scalatest" %% "scalatest" % "3.3.0-SNAP2" % "test"
 )

@@ -1,7 +1,7 @@
 package com.github.jurajburian.mailer
 
-import javax.mail.Session
-import javax.mail.internet.{MimeMessage => JavaMimeMessage}
+import jakarta.mail.Session
+import jakarta.mail.internet.{MimeMessage => JavaMimeMessage}
 
 class MimeMessage(session: Session) extends JavaMimeMessage(session) {
 

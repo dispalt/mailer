@@ -22,7 +22,7 @@ _ScalaDoc_ documentation is available online for the following _Mailer_ versions
 Mailer is available for Scala 2.11 and 2.12
 To get started with SBT, add dependency to your build.sbt file:
 ```Scala
-libraryDependencies += "com.github.jurajburian" %% "mailer" % "1.2.3" withSources
+libraryDependencies += "com.dispalt" %% "mailer" % "2.0.0" withSources
 ```
 ## Usage
 ### 1/ Build plain Java Mail Session:
@@ -58,8 +58,15 @@ val content = new Content().text("some text", headers = Seq(contentDispositionHe
 
 ### 4/ Send Mail
 ```Scala
-import javax.mail.internet.InternetAddress
-val content = new Content().text("Hello there!")
+import com.github.jurajburian.mailer.{Content, Mailer, Message}
+import jakarta.mail.internet.InternetAddress
+
+import scala.util.Try
+
+val SenderAddress = "joe@gmail.com"
+val ReceiverAddress = "joe@gmail.com"
+val content = Content().text("Hello there!")
+val session = ???
 val msg = Message(
       from = new InternetAddress(SenderAddress),
       subject = "my subject",
@@ -68,8 +75,6 @@ val msg = Message(
 val mailer = Mailer(session)
 // recomendations: use try
 Try{mailer.send(msg)}
-// or  future
-Future{mailer.send(msg)}
 ```
 _Remark:_ All methods from the Mailer trait may thrown `javax.mail.MessagingException`.
 ### 5/ Close Session
@@ -77,6 +82,8 @@ _Remark:_ All methods from the Mailer trait may thrown `javax.mail.MessagingExce
 
 ### Changelog
 
+* **v2.0.0**
+   * Move to jakarta 
 * **v1.2.3**
    * Bugfix: "Message-ID" header now gets correctly set if specified on the message.
 * **v1.2.2**

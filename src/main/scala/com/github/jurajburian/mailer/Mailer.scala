@@ -2,10 +2,10 @@ package com.github.jurajburian.mailer
 
 import java.io.File
 
-import javax.activation.{DataHandler, FileDataSource}
-import javax.mail.internet.{InternetAddress, MimeBodyPart, MimeMultipart, PreencodedMimeBodyPart}
-import javax.mail.util.ByteArrayDataSource
-import javax.mail.{MessagingException, Session, Transport}
+import jakarta.activation.{DataHandler, FileDataSource}
+import jakarta.mail.internet.{InternetAddress, MimeBodyPart, MimeMultipart, PreencodedMimeBodyPart}
+import jakarta.mail.util.ByteArrayDataSource
+import jakarta.mail.{MessagingException, Session, Transport}
 
 
 /**
@@ -254,7 +254,7 @@ object Mailer {
 
 		@throws[MessagingException]
 		override def send(msg: Message): Mailer = {
-			import javax.mail.{Message => M}
+			import jakarta.mail.{Message => M}
 			connect()
 			val message = new MimeMessage(session)
 			msg.to.foreach(message.addRecipient(M.RecipientType.TO, _))
