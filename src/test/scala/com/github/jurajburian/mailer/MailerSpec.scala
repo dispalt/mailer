@@ -23,7 +23,7 @@ class MailerSpec extends AnyFlatSpec with Matchers {
 	val TestHeaderMessageId = CustomHeader("Message-ID", "some-message-id")
 
 	"Session" should "parse set of properties and return correct value" in {
-		val session = (SmtpAddress(SmtpHost, SmtpPort) :: Debug(true) :: SmtpTimeout(1000) :: SessionFactory()).session()
+		val session = (SmtpAddress(SmtpHost, SmtpPort) :: Debug(debug = true) :: SmtpTimeout(1000) :: SessionFactory()).session()
 		assert(session.getProperties.size() == 4)
 	}
 

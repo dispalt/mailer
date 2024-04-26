@@ -1,16 +1,16 @@
-val pScalaVersion = "2.13.6"
+val pScalaVersion = "2.13.13"
 
 organization := "com.dispalt"
 
 name := "mailer"
 
-version := "2.0.0"
+version := "2.1.0"
 
 description := "Thin wrapper of JavaMail library written in Scala language. Mailer is aim to be used in situations when is necessary send multiple mails, e.t. instance of javax.mail.Session is created and used by Mailer."
 
 scalaVersion in Scope.GlobalScope := pScalaVersion
 
-crossScalaVersions := Seq("2.12.12", pScalaVersion)
+crossScalaVersions := Seq("2.12.18", pScalaVersion)
 
 publishMavenStyle := true
 
@@ -32,7 +32,7 @@ publishMavenStyle := true
 
 autoAPIMappings := true
 
-publishArtifact in Test := false
+Test / publishArtifact := false
 
 pomIncludeRepository := { _ => false }
 
@@ -75,10 +75,11 @@ scalacOptions := Seq(
 	"-Xfatal-warnings",
 	"-Xlint",
 	"-Yrangepos",
-	"-language:postfixOps"
+	"-language:postfixOps",
+	"-release", "8"
 )
 
 libraryDependencies ++= Seq(
-	"com.sun.mail" % "jakarta.mail" % "2.0.1",
-	"org.scalatest" %% "scalatest" % "3.3.0-SNAP2" % "test"
+	"org.eclipse.angus" % "jakarta.mail" % "2.0.3",
+	"org.scalatest" %% "scalatest" % "3.2.18" % "test"
 )

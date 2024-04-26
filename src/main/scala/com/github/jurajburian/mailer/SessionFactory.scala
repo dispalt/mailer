@@ -75,10 +75,10 @@ object SessionFactory {
 						case None => {
 							Session.getInstance(ps)
 						}
-						case Some((u, p)) => {
+						case Some((u, pass)) => {
 							ps.put("mail.smtp.auth", true.toString)
 							Session.getInstance(ps, new Authenticator {
-								protected override def getPasswordAuthentication() = new PasswordAuthentication(u, p)
+								protected override def getPasswordAuthentication() = new PasswordAuthentication(u, pass)
 							})
 						}
 					}
