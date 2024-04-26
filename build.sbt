@@ -4,7 +4,7 @@ organization := "com.dispalt"
 
 name := "mailer"
 
-version := "2.1.0"
+version := "2.1.1"
 
 description := "Thin wrapper of JavaMail library written in Scala language. Mailer is aim to be used in situations when is necessary send multiple mails, e.t. instance of javax.mail.Session is created and used by Mailer."
 
@@ -80,6 +80,7 @@ scalacOptions := Seq(
 )
 
 libraryDependencies ++= Seq(
-	"org.eclipse.angus" % "jakarta.mail" % "2.0.3",
+	"jakarta.mail" % "jakarta.mail-api" % "2.1.3",
+	"org.eclipse.angus" % "angus-mail" % "2.0.3",
 	"org.scalatest" %% "scalatest" % "3.2.18" % "test"
 )
