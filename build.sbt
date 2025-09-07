@@ -10,22 +10,14 @@ description := "Thin wrapper of JavaMail library written in Scala language. Mail
 
 scalaVersion in Scope.GlobalScope := pScalaVersion
 
-crossScalaVersions := Seq("2.12.18", pScalaVersion, "3.3.6")
+crossScalaVersions := Seq("2.12.20", pScalaVersion, "3.3.6")
 
-publishMavenStyle := true
-
-publishTo := {
-  val nexus = "https://oss.sonatype.org/"
-  if (isSnapshot.value)
-    Some("snapshots" at nexus + "content/repositories/snapshots")
-  else
-    Some("releases" at nexus + "service/local/staging/deploy/maven2")
+ThisBuild / publishTo := {
+  val centralSnapshots =
+    "https://central.sonatype.com/repository/maven-snapshots/"
+  if (isSnapshot.value) Some("central-snapshots" at centralSnapshots)
+  else localStaging.value
 }
-
-publishTo := sonatypePublishToBundle.value
-
-// Your profile name of the sonatype account. The default is the same with the organization value
-sonatypeProfileName := "com.dispalt"
 
 // To sync with Maven central, you need to supply the following information:
 publishMavenStyle := true
@@ -91,5 +83,5 @@ scalacOptions ++= {
 libraryDependencies ++= Seq(
   "jakarta.mail" % "jakarta.mail-api" % "2.1.3",
   "org.eclipse.angus" % "angus-mail" % "2.0.3",
-  "org.scalatest" %% "scalatest" % "3.2.18" % "test"
+  "org.scalatest" %% "scalatest" % "3.2.19" % Test
 )
