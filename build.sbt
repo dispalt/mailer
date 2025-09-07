@@ -1,25 +1,25 @@
-val pScalaVersion = "2.13.13"
+val pScalaVersion = "2.13.16"
 
 organization := "com.dispalt"
 
 name := "mailer"
 
-version := "2.1.1"
+version := "2.1.2"
 
 description := "Thin wrapper of JavaMail library written in Scala language. Mailer is aim to be used in situations when is necessary send multiple mails, e.t. instance of javax.mail.Session is created and used by Mailer."
 
 scalaVersion in Scope.GlobalScope := pScalaVersion
 
-crossScalaVersions := Seq("2.12.18", pScalaVersion)
+crossScalaVersions := Seq("2.12.18", pScalaVersion, "3.3.6")
 
 publishMavenStyle := true
 
 publishTo := {
-	val nexus = "https://oss.sonatype.org/"
-	if (isSnapshot.value)
-		Some("snapshots" at nexus + "content/repositories/snapshots")
-	else
-		Some("releases" at nexus + "service/local/staging/deploy/maven2")
+  val nexus = "https://oss.sonatype.org/"
+  if (isSnapshot.value)
+    Some("snapshots" at nexus + "content/repositories/snapshots")
+  else
+    Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }
 
 publishTo := sonatypePublishToBundle.value
@@ -36,8 +36,7 @@ Test / publishArtifact := false
 
 pomIncludeRepository := { _ => false }
 
-pomExtra := (
-	<url>https://github.com/JurajBurian/mailer</url>
+pomExtra := (<url>https://github.com/JurajBurian/mailer</url>
 		<licenses>
 			<license>
 				<name>unlicense</name>
@@ -67,20 +66,30 @@ pomExtra := (
 			</developer>
 		</developers>)
 
-scalacOptions := Seq(
-	"-encoding", "UTF-8",
-	"-unchecked",
-	"-deprecation",
-	"-feature",
-	"-Xfatal-warnings",
-	"-Xlint",
-	"-Yrangepos",
-	"-language:postfixOps",
-	"-release", "8"
-)
+scalacOptions ++= {
+  CrossVersion.partialVersion(scalaVersion.value) match {
+    case Some((2, _)) =>
+      Seq(
+        "-encoding",
+        "UTF-8",
+        "-unchecked",
+        "-deprecation",
+        "-feature",
+        "-Xfatal-warnings",
+        "-Xlint",
+        "-Yrangepos",
+        "-language:postfixOps",
+        "-release",
+        "8"
+      )
+    case _ =>
+      Seq.empty
+
+  }
+}
 
 libraryDependencies ++= Seq(
-	"jakarta.mail" % "jakarta.mail-api" % "2.1.3",
-	"org.eclipse.angus" % "angus-mail" % "2.0.3",
-	"org.scalatest" %% "scalatest" % "3.2.18" % "test"
+  "jakarta.mail" % "jakarta.mail-api" % "2.1.3",
+  "org.eclipse.angus" % "angus-mail" % "2.0.3",
+  "org.scalatest" %% "scalatest" % "3.2.18" % "test"
 )
